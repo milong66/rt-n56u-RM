@@ -162,8 +162,9 @@ sudo yum install ncurses-* flex byacc bison zlib-* gmp-* mpfr-* gettext \
 * 克隆源码
 
 ```shell
-git clone --depth=1 https://e.coding.net/hanwckf/rt-n56u/padavan.git /opt/rt-n56u
-#git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+# 清除旧记录
+rm -rf /opt/rt-n56u
+git clone --depth=1 https://github.com/milong66/rt-n56u-RM.git /opt/rt-n56u
 ```
 
 * 准备工具链
@@ -183,7 +184,7 @@ sh dl_toolchain.sh
 * (可选) 修改机型配置文件
 
 ```shell
-nano /opt/rt-n56u/trunk/configs/templates/PSG1218.config
+nano /opt/rt-n56u/trunk/configs/templates/RM2100.config
 ```
 
 * 开始编译
@@ -191,7 +192,7 @@ nano /opt/rt-n56u/trunk/configs/templates/PSG1218.config
 ```shell
 cd /opt/rt-n56u/trunk
 # 对于WSL环境，建议使用sudo进行编译，或者使用fakeroot-tcp代替fakeroot
-fakeroot ./build_firmware_modify PSG1218
+fakeroot ./build_firmware_modify RM2100
 # 脚本第一个参数为路由型号，在trunk/configs/templates/中
 # 编译好的固件在trunk/images里
 # 首次编译完成后，如果需要再次编译其它固件，需要执行清理脚本：
